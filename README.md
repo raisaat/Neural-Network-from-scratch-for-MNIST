@@ -12,6 +12,20 @@ The NN is made up of classes of layers - MatrixMulAndAddition, Relu and Softmax.
 
 **Weight update code:** If a layer has learnable parameters (the multiplication and bias layer), the layer's backward function also calculates the derivative of the loss w.r.t. each of these parameters (dLoss/dParam) using dLoss/dOut and the derivative of the output w.r.t. the parameters (dOut/dParam); dLoss/dParam = dLoss/dOut * dOut/dParam. It uses stochastic gradient descent to update the parameters using dLoss/dParam and the learning rate that is passed to it: Param = Param - lr * dLoss/dParam.
 
+## Architecture:
+
+**Division by 255.0:** input size = 28 x 28 x 1, output size = 28 x 28 x 1  
+**Vectorization:** input size = 28 x 28 x 1, output size = 784 x 1   
+**Matrix Mulitplication:** input size = 784 x 1, output size = 1000 x 1, parameter size = 784 x 1000, MACs = 784000  
+**Addition:** input size = 1000 x 1, output size = 1000 x 1, parameter size = 1000 x 1  
+**ReLU:** input size = 1000 x 1, output size = 1000 x 1  
+**Matrix Multiplication:** input size = 1000 x 1, output size = 100 x 1, parameter size = 1000 x 100, MACs = 100000  
+**Addition:** input size = 100 x 1, output size = 100 x 1, parameter size = 100 x 1  
+**ReLU:** input size = 100 x 1, output size = 100 x 1  
+**Matrix Multiplication:** input size = 100 x 1, output size = 10 x 1, parameter size = 100 x 10, MACs = 1000  
+**Addition:** input size = 10 x 1, output size = 10 x 1, parameter size = 10 x 1  
+**Softmax:** input size = 10 x 1, output size = 10 x 1  
+
 ## Accuracy Display:
 
 ```
@@ -30,17 +44,3 @@ Final accuracy of test set = 95.49
 ## Performance Display:
 
 `Total execution time: 66.81339806715647 minutes`
-
-## Architecture:
-
-**Division by 255.0:** input size = 28 x 28 x 1, output size = 28 x 28 x 1  
-**Vectorization:** input size = 28 x 28 x 1, output size = 784 x 1   
-**Matrix Mulitplication:** input size = 784 x 1, output size = 1000 x 1, parameter size = 784 x 1000, MACs = 784000  
-**Addition:** input size = 1000 x 1, output size = 1000 x 1, parameter size = 1000 x 1  
-**ReLU:** input size = 1000 x 1, output size = 1000 x 1  
-**Matrix Multiplication:** input size = 1000 x 1, output size = 100 x 1, parameter size = 1000 x 100, MACs = 100000  
-**Addition:** input size = 100 x 1, output size = 100 x 1, parameter size = 100 x 1  
-**ReLU:** input size = 100 x 1, output size = 100 x 1  
-**Matrix Multiplication:** input size = 100 x 1, output size = 10 x 1, parameter size = 100 x 10, MACs = 1000  
-**Addition:** input size = 10 x 1, output size = 10 x 1, parameter size = 10 x 1  
-**Softmax:** input size = 10 x 1, output size = 10 x 1  
