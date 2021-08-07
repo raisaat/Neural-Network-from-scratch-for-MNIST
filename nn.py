@@ -3,7 +3,6 @@
 # LOGISTICS
 #
 #    Name: Raisaat Rashid
-#    Net ID: rar150430
 #
 # FILE
 #
